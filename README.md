@@ -1,64 +1,62 @@
-# [Astro](https://astro.build) Blog Template
+# Reflections
 
-[![Screenshot](screenshot.png)](https://astro-blog-template.netlify.app/)
+Personal blog built with [Astro](https://astro.build).
 
-## 👉 Check out the ✨ [Live Demo](https://astro-blog-template.netlify.app/) ✨
+Live site: `https://felipe-vrgs.github.io`
 
-## 👩‍🚀 Getting Started
+## Local development
 
-### Locally
+Prereqs: Node.js LTS + npm.
 
-```
-npm init astro -- --template Charca/astro-blog-template
-```
-
-### On StackBlitz
-
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/charca/astro-blog-template)
-
-## ✨ Features:
-
-- ✅ Astro 4.0
-- ✅ Dark Mode
-- ✅ Full Markdown support
-- ✅ SEO-friendly setup with canonical URLs and OpenGraph data
-- ✅ RSS 2.0 generation
-- ✅ Sitemap.xml generation
-
-## 🚀 Project Structure
-
-Inside of your Astro project, you'll see the following folders and files:
-
-```
-/
-├── public/
-│   ├── robots.txt
-│   └── favicon.ico
-├── src/
-│   ├── components/
-│   │   └── Tour.astro
-│   └── pages/
-│       └── index.astro
-└── package.json
+```bash
+npm ci
+npm run dev
 ```
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+Astro will print the local URL in the terminal (usually `http://localhost:4321`).
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Commands
 
-Any static assets, like images, can be placed in the `public/` directory.
+```bash
+npm run dev
+npm run build
+npm run preview
+```
 
-## 🧞 Commands
+Build output is written to `dist/`.
 
-All commands are run from the root of the project, from a terminal:
+## Writing posts
 
-| Command           | Action                                       |
-| :---------------- | :------------------------------------------- |
-| `npm install`     | Installs dependencies                        |
-| `npm run dev`     | Starts local dev server at `localhost:3030`  |
-| `npm run build`   | Build your production site to `./dist/`      |
-| `npm run preview` | Preview your build locally, before deploying |
+Posts live in `src/data/blog-posts/` and are loaded as an Astro content collection
+(see `src/content.config.js`).
 
-## 👀 Want to learn more?
+Each post is a Markdown file with frontmatter like:
 
-Feel free to check [Astro's documentation](https://github.com/withastro/astro) or jump into Astro's [Discord server](https://astro.build/chat).
+```md
+---
+title: "My post title"
+slug: my-post
+publishDate: 19 Feb 2026
+description: "One sentence summary."
+---
+```
+
+Routes:
+
+- `/blog` lists posts
+- `/blog/<slug>` renders a post
+
+## Images and other assets
+
+Static files go in `public/` and are referenced from the site root.
+
+- Site assets: `public/assets/` -> `/assets/...`
+- Blog images: `public/assets/blog/` -> `/assets/blog/...`
+
+## Deployment
+
+This repo deploys to GitHub Pages on push to `main` via
+`.github/workflows/deploy.yml`.
+
+The workflow runs `npm ci`, builds the site, and uploads `dist/` as the Pages
+artifact.

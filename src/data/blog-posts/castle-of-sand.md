@@ -5,7 +5,7 @@ publishDate: 19 Feb 2026
 description: "Why faster code generation is exposing the same old engineering failures."
 ---
 
-![Casual 3D illustration](/assets/blog/casual-life-3d-workspace.webp)
+![A castle in a storm](/assets/blog/castle-of-sand.png)
 
 If you only look at output, it already feels like Dario Amodei might be right.
 
