@@ -3,6 +3,7 @@ title: "Castles Built on Sand: The Reality of AI Coding"
 slug: castle-of-sand
 publishDate: 19 Feb 2026
 description: "Why faster code generation is exposing the same old engineering failures."
+image: "/assets/blog/castle-of-sand.png"
 ---
 
 ![A castle in a storm](/assets/blog/castle-of-sand.png)

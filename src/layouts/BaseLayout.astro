@@ -8,12 +8,14 @@ export interface Props {
   description: string;
   permalink: string;
   current?: string;
+  image?: string;
+  type?: string;
 }
-const { title, description, permalink, current } = Astro.props;
+const { title, description, permalink, current, image, type } = Astro.props;
 ---
 <html lang="en">
 <head>
-  <BaseHead title={title} description={description} permalink={permalink} />
+  <BaseHead title={title} description={description} permalink={permalink} image={image} type={type} />
 </head>
 <body>
   <div class="layout">
@@ -46,5 +48,11 @@ const { title, description, permalink, current } = Astro.props;
     width: 100%;
     display: flex;
     flex-direction: column;
+  }
+
+  @media screen and (max-width: 520px) {
+    main {
+      padding: 1em;
+    }
   }
 </style>

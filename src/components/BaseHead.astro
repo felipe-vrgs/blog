@@ -8,11 +8,13 @@ export interface Props {
   title: string
   description: string
   permalink: string
+  image?: string
+  type?: string
 }
 
-const { title, description, permalink } = Astro.props
+const { title, description, permalink, image, type = 'website' } = Astro.props
 const fullTitle = title === site.title ? site.title : `${title} | ${site.title}`
-const socialUrl = Astro.site.href + 'assets/social.png'
+const socialUrl = image ? Astro.site.href + image.replace(/^\//, '') : Astro.site.href + 'assets/social.png'
 ---
 
 <!-- Global Metadata -->
@@ -32,18 +34,18 @@ const socialUrl = Astro.site.href + 'assets/social.png'
 <meta name="description" content={description} />
 
 <!-- Open Graph / Facebook -->
-<meta property="og:type" content="website" />
+<meta property="og:type" content={type} />
 <meta property="og:url" content={permalink} />
 <meta property="og:title" content={fullTitle} />
 <meta property="og:description" content={description} />
 <meta property="og:image" content={socialUrl} />
 
 <!-- Twitter -->
-<meta property="twitter:card" content="summary_large_image" />
-<meta property="twitter:url" content={permalink} />
-<meta property="twitter:title" content={fullTitle} />
-<meta property="twitter:description" content={description} />
-<meta property="twitter:image" content={socialUrl} />
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:url" content={permalink} />
+<meta name="twitter:title" content={fullTitle} />
+<meta name="twitter:description" content={description} />
+<meta name="twitter:image" content={socialUrl} />
 
 <ClientRouter />
 
@@ -60,3 +62,7 @@ const socialUrl = Astro.site.href + 'assets/social.png'
     root.classList.remove('theme-dark')
   }
 </script>
+
+<!-- Cloudflare Web Analytics -->
+<script defer src='https://static.cloudflareinsights.com/beacon.min.js' data-cf-beacon='{"token": "e06f53bd326e473997719e1a20be0a9b"}'></script>
+<!-- End Cloudflare Web Analytics -->
